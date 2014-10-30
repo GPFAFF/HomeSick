@@ -29,12 +29,16 @@
 
 	<div class="wrapper">
 		<div class="main">
+		
+		<!-- Header for Page -->
 				<header class="title"><i class="fa fa-globe"></i> HomeSick <i class="fa fa-globe"></i>
 				</header>
-
+		
+		<!-- Main Message -->
 			<div class="about">
 				<h3> Enter your favorite location. Search a HashTag.  See popular photos </h3>
-
+	    
+	    <!-- Font Awesome Icons -->
 			<div class="icons">
 
 				<section class="love"><i class="fa fa-binoculars"></i></section>
@@ -46,25 +50,27 @@
 				<section class="help"><i class="fa fa-cloud"></i></section>
 			</div>
 
-<div class="middle-nav">
+	
+		<div class="middle-nav">
 
-<select type="text" placeholder="Pick your target" id="selector">
-	<option value="location">Location</option>
-	<option value="hashtag">Hashtag</option>
-</select>
+				<select type="text" placeholder="Pick your target" id="selector">
+					<option value="location">Location</option>
+					<option value="hashtag">Hashtag</option>
+				</select>
 
-<input type="text" placeholder="ENTER YOUR FAVORITE CITY OR #" id="masterInput" />
+				<input type="text" placeholder="ENTER YOUR FAVORITE CITY OR #" id="masterInput" />
 
-<button type="text" id="clearInput"> START A NEW SEARCH </button>
+				<button type="text" id="clearInput"> START A NEW SEARCH </button>
 
-<ul></ul>
-<div id="map-canvas"></div>
+			<!-- Empty Container for Images -->
+			<ul></ul>
+			<div id="map-canvas"></div>
 
-</div>
-
+		</div>
+<!-- Clear Script to reset DOM -->
 <script>
 $("#clearInput").click(function() {
-	$("ul").empty();
+	$("ul").fadeOut(2000);
 });
 </script>
 

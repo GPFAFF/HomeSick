@@ -1,6 +1,9 @@
+
+//INSTAGRAM ACCESS TOKEN 
 var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
     latlng = {};
 
+//INSTAGRAM API POPULAR FUNCTION
 function instaPopular(lat, lng) {
     $.ajax({
         url: 'https://api.instagram.com/v1/media/popular?client_id=67aad4d3a43f4faf8379fb750914d8d5',
@@ -22,6 +25,7 @@ function instaPopular(lat, lng) {
     });
 }
 
+//INSTAGRAM API TAG FUNCTION 
 function instaTag(tag){
     $.ajax({
         url: 'https://api.instagram.com/v1/tags/' + tag + '/media/recent',
@@ -44,7 +48,7 @@ function instaTag(tag){
     });
 }
 
-
+//INSTAGRAM API LOCATION FUNCTION 
 function instaLocation(lat, lng){
 
     $.ajax({
@@ -71,6 +75,7 @@ function instaLocation(lat, lng){
     });
 }
 
+//Google Maps Function
 function initialize() {
   var mapOptions = {
     center: { lat: -34.397, lng: 150.644},
@@ -81,17 +86,18 @@ map = new google.maps.Map(document.getElementById('map-canvas'),
 geocoder = new google.maps.Geocoder;
 }
 
+//Keydown function to pass inputs into API
 $(document).ready(function(){
     $('#masterInput').keydown(function(e){
         if(e.which == '13'){
             if ($('#selector').val() === "location"){
-                console.log("test");
                 initialize();
+                //Google Lat/Lng function 
                 geocoder.geocode({address: $(this).val()}, function(results, status){
                     latlng.lat = results[0].geometry.location.B;
                     latlng.lng = results[0].geometry.location.k;
-                    //Popular Photos Search
                     
+                    //Popular Photos Search
                     instaLocation(latlng.lat, latlng.lng);
                     
                 });
