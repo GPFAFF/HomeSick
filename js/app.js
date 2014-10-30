@@ -102,8 +102,3 @@ $(document).ready(function(){
     });
     //Popular Photos Search
     instaPopular(latlng.lat, latlng.lng); 
-<<<<<<< HEAD
-});
-=======
-});
->>>>>>> master
