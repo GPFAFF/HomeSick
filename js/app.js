@@ -90,7 +90,8 @@ $(document).ready(function(){
                 geocoder.geocode({address: $(this).val()}, function(results, status){
                     latlng.lat = results[0].geometry.location.B;
                     latlng.lng = results[0].geometry.location.k;
-
+                    //Popular Photos Search
+                    
                     instaLocation(latlng.lat, latlng.lng);
                     
                 });
@@ -100,6 +101,4 @@ $(document).ready(function(){
             }
         }
     });
-    //Popular Photos Search
-    instaPopular(latlng.lat, latlng.lng); 
 });
