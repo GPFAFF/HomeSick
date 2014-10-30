@@ -1,5 +1,5 @@
 var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
-latlng = {};
+    latlng = {};
 
 function instaPopular(lat, lng) {
     $.ajax({
@@ -102,3 +102,4 @@ $(document).ready(function(){
     });
     //Popular Photos Search
     instaPopular(latlng.lat, latlng.lng); 
+});
