@@ -125,5 +125,8 @@ img{
 	.title{
 		font-size: 50px;
 	}
+	#masterInput{
+		width: 29%;
+	}
 
 }
