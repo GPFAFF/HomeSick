@@ -19,7 +19,7 @@ function instaTag(tag) {
             for (x in data.data) {
                 $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>')
             }
-            $('ul').append('<button type="text" id="search"> SEARCH </button>');
+            $('ul').append('<button type="text" id="clearInput">Clear Search Results</button>');
         },
         error: function (data) {
             console.log(data);
@@ -47,7 +47,7 @@ function instaLocation(lat, lng) {
             for (x in data.data) {
                 $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>').fadeIn("#clearInput", 2000);
             }
-            $('ul').append('<button type="text" id="search"> SEARCH </button>');
+            $('ul').append('<button type="text" id="clearInput">Clear Search Results</button>');
         },
         error: function (data) {
             console.log(data);
@@ -102,11 +102,7 @@ $(document).ready(function () {
         $("#clearInput").fadeIn(2000)
     })
     
-    $("#clearInput").click(function () {
-        $("li").fadeOut(2000);
-        $("#clearInput").click(function () {
-            $("#clearInput").fadeOut(2000);
-        })
-
+    $("ul").on('click', '#clearInput', function () {
+        $("ul li, ul #clearInput").fadeOut(2000);
     });
 });
