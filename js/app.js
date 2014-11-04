@@ -100,12 +100,8 @@ $(document).ready(function () {
         }
 
     });
-});
-
-
 
 //clearing of DOM and ability to reload search 
-$(document).ready(function () {
     $("#search").click(function () {
         $("#clearInput").fadeIn(2000)
     })
