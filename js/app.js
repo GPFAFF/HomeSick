@@ -1,29 +1,7 @@
-
 //INSTAGRAM ACCESS TOKEN 
 var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
     latlng = {};
 
-        //INSTAGRAM API POPULAR FUNCTION
-        function instaPopular(lat, lng) {
-            $.ajax({
-                url: 'https://api.instagram.com/v1/media/popular?client_id=67aad4d3a43f4faf8379fb750914d8d5',
-                dataType: 'jsonp',
-                cache: false,
-                type: 'GET',
-                data: {
-                    client_id: accessToken,
-                },
-                success: function (data) {
-                    console.log(data);
-                    for (x in data.data) {
-                        $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>');
-                    }
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-        }
 
         //INSTAGRAM API TAG FUNCTION 
         function instaTag(tag){
@@ -41,6 +19,7 @@ var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
                     for (x in data.data) {
                         $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>')
                     }
+                      $('ul').append('<button type="text" id="search"> SEARCH </button>');
                 },
                 error: function(data) {
                     console.log(data);
@@ -66,8 +45,9 @@ var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
                     console.log(data);
                     $('ul').empty();
                     for (x in data.data) {
-                        $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>');
-                    }
+                        $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>').fadeIn("#clearInput", 2000);                  
+                        }
+                          $('ul').append('<button type="text" id="search"> SEARCH </button>');
                 },
                 error: function(data) {
                     console.log(data);
@@ -90,29 +70,44 @@ var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
             $(document).ready(function(){
                 $('#masterInput').keydown(function(e){
                     if(e.which == '13'){
+                         $('#search').click();
+                         initialize();
+                         
+                     }
+                 });
+                $("#search").click(function(){
                         if ($('#selector').val() === "location"){
-                            initialize();
+                             initialize();
                             //Google Lat/Lng function 
-                            geocoder.geocode({address: $(this).val()}, function(results, status){
+                                geocoder.geocode({address: $(this).val()}, function(results, status){
                                 latlng.lat = results[0].geometry.location.B;
                                 latlng.lng = results[0].geometry.location.k;
                                 
                                 //Popular Photos Search
                                 instaLocation(latlng.lat, latlng.lng);
+                               
                                 
                             });
                         } else{
                             //Tag Popular Search 
                             instaTag($(this).val());
                         }
-                    }
+                    
                 });
             });
+
+    
             
             //clearing of DOM and ability to reload search 
             $(document).ready(function(){
+                $("#search").click(function(){
+                    $("#clearInput").fadeIn(2000)
+                })
                 $("#clearInput").click(function() {
                 $("li").fadeOut(2000);
+                $("#clearInput").click(function(){
+                    $("#clearInput").fadeOut(2000);
+                })
 
             });
 });
