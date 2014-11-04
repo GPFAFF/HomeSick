@@ -71,16 +71,16 @@ function initialize() {
 
 //Keydown function to pass inputs into API
 $(document).ready(function () {
+    initialize();
+    
     $('#masterInput').keydown(function (e) {
         if (e.which == '13') {
             $('#search').click();
-            initialize();
         }
     });
     
     $("#search").click(function () {
         if ($('#selector').val() === "location") {
-            initialize();
             //Google Lat/Lng function 
             geocoder.geocode({
                 address: $(this).val()
