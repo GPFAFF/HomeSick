@@ -65,8 +65,7 @@ function initialize() {
         zoom: 8
     };
 
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     geocoder = new google.maps.Geocoder;
 }
 
@@ -76,9 +75,9 @@ $(document).ready(function () {
         if (e.which == '13') {
             $('#search').click();
             initialize();
-
         }
     });
+    
     $("#search").click(function () {
         if ($('#selector').val() === "location") {
             initialize();
@@ -91,20 +90,18 @@ $(document).ready(function () {
 
                 //Popular Photos Search
                 instaLocation(latlng.lat, latlng.lng);
-
-
             });
         } else {
             //Tag Popular Search 
             instaTag($(this).val());
         }
-
     });
 
-//clearing of DOM and ability to reload search 
+    //clearing of DOM and ability to reload search 
     $("#search").click(function () {
         $("#clearInput").fadeIn(2000)
     })
+    
     $("#clearInput").click(function () {
         $("li").fadeOut(2000);
         $("#clearInput").click(function () {
