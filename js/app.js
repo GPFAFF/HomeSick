@@ -83,7 +83,7 @@ $(document).ready(function () {
         if ($('#selector').val() === "location") {
             //Google Lat/Lng function 
             geocoder.geocode({
-                address: $(this).val()
+                address: $('#masterInput').val()
             }, function (results, status) {
                 latlng.lat = results[0].geometry.location.B;
                 latlng.lng = results[0].geometry.location.k;
@@ -93,7 +93,7 @@ $(document).ready(function () {
             });
         } else {
             //Tag Popular Search 
-            instaTag($(this).val());
+            instaTag($('#masterInput').val());
         }
     });
 
