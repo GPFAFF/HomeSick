@@ -117,3 +117,12 @@ img{
 	max-width: 100%;
 	text-align: center;
 }
+/*Responsive Style*/
+@media only screen and (min-width:320px) and (max-width: 580px) {
+	.title{
+		font-size: 60px;
+	}
+	#clearInput{
+		width:55%;
+	}	
+}
