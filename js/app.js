@@ -1,4 +1,3 @@
-
 //INSTAGRAM ACCESS TOKEN
 var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
     latlng = {};
