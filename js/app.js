@@ -36,8 +36,8 @@ function instaLocation(lat, lng) {
             cache: false,
             data: {
             client_id: accessToken,
-            lat: lng,
-            lng: lat,
+            lat: lat,
+            lng: lng,
             distance: '',
             },
 
