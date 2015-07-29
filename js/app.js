@@ -29,6 +29,7 @@ success: function (data) {
       
 //INSTAGRAM API LOCATION FUNCTION
 function instaLocation(lat, lng) {
+            console.log(lat);
             $.ajax({
             url: 'https://api.instagram.com/v1/media/search?client_id="67aad4d3a43f4faf8379fb750914d8d5',
             dataType: 'jsonp',
@@ -36,15 +37,15 @@ function instaLocation(lat, lng) {
             cache: false,
             data: {
             client_id: accessToken,
-            lat: lat,
-            lng: lng,
+            lat: lng,
+            lng: lat,
             distance: '',
             },
 
 success: function (data) {
             console.log(data);
             $('ul').empty();
-            for (x in data.data) {
+            for (var x in data.data) {
             $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>').fadeIn("#clearInput", 2000);
             }
             $('ul').append('<button type="text" id="clearInput">Clear Search Results</button>');
@@ -84,7 +85,7 @@ if ($('#selector').val() === "location") {
             geocoder.geocode({
                     address: $('#masterInput').val()
                     }, function (results, status) {
-                        latlng.lat = results[0].geometry.location.B;
+                        latlng.lat = results[0].geometry.location.D;
                         latlng.lng = results[0].geometry.location.k;
 
 //Popular Photos Search
