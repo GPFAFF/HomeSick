@@ -45,7 +45,7 @@ function instaLocation(lat, lng) {
 success: function (data) {
             console.log(data);
             $('ul').empty();
-            for (var x in data.data) {
+            for ( x in data.data) {
             $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>').fadeIn("#clearInput", 2000);
             }
             $('ul').append('<button type="text" id="clearInput">Clear Search Results</button>');
