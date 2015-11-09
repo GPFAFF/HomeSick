@@ -15,30 +15,31 @@ function instaTag(tag) {
             },
 
 success: function (data) {
+            console.log(data);
+                $('ul').empty();
+                 for (var x in data.data) {
+                    $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>').fadeIn("#clearInput", 2000);
+                }
+                    $('ul').append('<button type="text" id="clearInput">Clear Search Results</button>');
+                },
+error: function (data) {
         console.log(data);
-        for (x in data.data) {
-        $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>')
         }
-        $('ul').append('<button type="text" id="clearInput">Clear Search Results</button>');
-        },
-        error: function (data) {
-        console.log(data);
-            }
-        });
-      }
+     });
+    }
       
 //INSTAGRAM API LOCATION FUNCTION
 function instaLocation(lat, lng) {
-            console.log(lat);
+            console.log(lat, ": lat", lng, ": lng");
             $.ajax({
-            url: 'https://api.instagram.com/v1/media/search?client_id="67aad4d3a43f4faf8379fb750914d8d5',
+            url: 'https://api.instagram.com/v1/media/search?' + accessToken,
             dataType: 'jsonp',
             type: 'GET',
             cache: false,
             data: {
             client_id: accessToken,
-            lat: lng,
-            lng: lat,
+            lat: lat,
+            lng: lng,
             distance: '',
             },
 
@@ -85,9 +86,12 @@ if ($('#selector').val() === "location") {
             geocoder.geocode({
                     address: $('#masterInput').val()
                     }, function (results, status) {
-                        latlng.lat = results[0].geometry.location.D;
-                        latlng.lng = results[0].geometry.location.k;
-
+                    if(status == google.maps.GeocoderStatus.OK){
+                        latlng.lat = results[0].geometry.location.lat();
+                        latlng.lng = results[0].geometry.location.lng();
+                    } else {
+                        result= "Unable to find address: " + status;
+                    }
 //Popular Photos Search
             instaLocation(latlng.lat, latlng.lng);
             });
