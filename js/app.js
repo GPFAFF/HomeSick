@@ -1,9 +1,10 @@
 //INSTAGRAM ACCESS TOKEN
-var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',
+var accessToken = '67aad4d3a43f4faf8379fb750914d8d5',  
     latlng = {};
 
 //INSTAGRAM API TAG FUNCTION
 function instaTag(tag) {
+    console.log("test");
     $.ajax({
             url: 'https://api.instagram.com/v1/tags/' + tag + '/media/recent',
             dataType: 'jsonp',
@@ -29,9 +30,9 @@ success: function (data) {
       
 //INSTAGRAM API LOCATION FUNCTION
 function instaLocation(lat, lng) {
-            console.log(lat);
+            console.log(latlng)
             $.ajax({
-            url: 'https://api.instagram.com/v1/media/search?client_id="67aad4d3a43f4faf8379fb750914d8d5',
+            url: 'https://api.instagram.com/v1/media/search?client_id=67aad4d3a43f4faf8379fb750914d8d5',
             dataType: 'jsonp',
             type: 'GET',
             cache: false,
@@ -45,7 +46,7 @@ function instaLocation(lat, lng) {
 success: function (data) {
             console.log(data);
             $('ul').empty();
-            for (var x in data.data) {
+            for (x in data.data) {
             $('ul').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>').fadeIn("#clearInput", 2000);
             }
             $('ul').append('<button type="text" id="clearInput">Clear Search Results</button>');
@@ -85,8 +86,8 @@ if ($('#selector').val() === "location") {
             geocoder.geocode({
                     address: $('#masterInput').val()
                     }, function (results, status) {
-                        latlng.lat = results[0].geometry.location.D;
-                        latlng.lng = results[0].geometry.location.k;
+                        latlng.lng = results[0].geometry.location.D;
+                        latlng.lat = results[0].geometry.location.k;
 
 //Popular Photos Search
             instaLocation(latlng.lat, latlng.lng);
@@ -99,7 +100,7 @@ if ($('#selector').val() === "location") {
         });
 //clearing of DOM and ability to reload search
     $("#search").click(function () {
-            $("#clearInput").fadeIn(2000)
+          /*  $("#clearInput").fadeIn(2000) */
             })
             $("ul").on('click', '#clearInput', function () {
             $("ul li, ul #clearInput").fadeOut(2000);
